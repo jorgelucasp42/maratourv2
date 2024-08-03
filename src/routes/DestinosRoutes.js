@@ -1,10 +1,8 @@
 import express from "express";
 import DestinoController from "../controllers/destinoController.js";
 
-const router = express.Router();
+const routes = express.Router();
 
-router.get("/destinos", DestinoController.ListarDestinos);
+routes.get("/", DestinoController.ListarDestinos);
 
-export default router;
-
-
+export default routes;

@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaraTour</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="logo">
-                <img src="images/logo.png" alt="MaraTour Logo">
+                <a href="index.html"><img src="images/maratour-logo.png" alt="MaraTour Logo"></a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#sobre">Sobre o Maranhão</a></li>
-                    <li><a href="#destinosatracoes">Destinos e Atrações</a></li>
-                    <li><a href="#cultura">Cultura e Tradições</a></li>
-                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="sobre.html">Sobre o Maranhão</a></li>
+                    <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
+                    <li><a href="cultura.html">Cultura e Tradições</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
                 </ul>
             </nav>
             <div class="search-container">
@@ -27,14 +29,47 @@
         </div>
     </header>
     <main>
-        <section id="destinos">
-            <h2>Destinos</h2>
-            <div id="destinos-list"></div>
+        <section class="carousel">
+            <div class="carousel-slide active" style="background-image: url('images/rota-dos-lencois.png');">
+                <h2>Rota dos Lençóis</h2>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/sao-luis.png');">
+                <h2>São Luís: Patrimônio Histórico</h2>
+            </div>
+            <div class="carousel-slide" style="background-image: url('images/chapada-das-mesas.png');">
+                <h2>Chapada das Mesas</h2>
+            </div>
+        </section>
+        <section id="attractions">
+            <div class="grid-container">
+                <div class="grid-item" style="background-image: url('images/rota-dos-lencois.png');" onclick="location.href='detalhes.html?destino=rota-dos-lencois'">
+                    <h3>Rota dos Lençóis</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/sao-luis.png');" onclick="location.href='detalhes.html?destino=sao-luis'">
+                    <h3>São Luís: Patrimônio Histórico</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/chapada-das-mesas.png');" onclick="location.href='detalhes.html?destino=chapada-das-mesas'">
+                    <h3>Chapada das Mesas</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/praca-goncalves-dias.png');" onclick="location.href='detalhes.html?destino=praca-goncalves-dias'">
+                    <h3>Praça Gonçalves Dias</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/alcantara.png');" onclick="location.href='detalhes.html?destino=alcantara'">
+                    <h3>Alcântara</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/palacio-dos-leoes.png');" onclick="location.href='detalhes.html?destino=palacio-dos-leoes'">
+                    <h3>Palácio dos Leões</h3>
+                </div>
+                <div class="grid-item" style="background-image: url('images/teatro-arthur-azevedo.png');" onclick="location.href='detalhes.html?destino=teatro-arthur-azevedo'">
+                    <h3>Teatro Arthur Azevedo</h3>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
         <p>© 2024 Turismo Maranhão. Todos os direitos reservados.</p>
     </footer>
+    <script src="js/map.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
