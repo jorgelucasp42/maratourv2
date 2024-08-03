@@ -22,7 +22,7 @@ function buscaDestino(id) {
 }
 
 app.get("/", (req, res) => {
-  res.status(200).send("MaraTour");
+    res.status(200).send("MaraTour");
 });
 
 app.get("/destinos", (req, res) => {
@@ -43,4 +43,26 @@ app.post("/destinos", (req, res) => {
     res.status(201).send("Destino cadastrado com sucesso");
 });
 
+app.put("/destinos/:id", (req, res) => {
+    const index = buscaDestino(req.params.id);
+    if (index !== -1) {
+        destinos[index].nome = req.body.nome;
+        res.status(200).json(destinos[index]);
+    } else {
+        res.status(404).send("Destino não encontrado");
+    }
+});
+
+app.delete("/destinos/:id", (req, res) => {
+    const index = buscaDestino(req.params.id);
+    if (index !== -1) {
+        destinos.splice(index, 1);
+        res.status(200).send("Destino removido com sucesso");
+    } else {
+        res.status(404).send("Destino não encontrado");
+    }
+});
+
 export default app;
+
+
