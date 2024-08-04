@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Destino</title>
+    <title>Resultados da Busca</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/detalhes.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi9USHsA-lmjOymKDTph28y87citHoLvI&callback=initMap" async defer></script>
 </head>
 <body>
     <header>
@@ -17,7 +15,7 @@
             <div class="logo">
                 <a href="index.html"><img src="images/maratour-logo.png" alt="MaraTour Logo"></a>
             </div>
-            <nav>
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="sobre.html">Sobre o Maranhão</a></li>
                     <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
@@ -26,27 +24,24 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <input type="text" id="search-bar" placeholder="Buscar destinos ou atrativos">
-                <button id="search-button"><i class="fas fa-search"></i></button>
+                <form id="search-form" action="resultados.html" method="get">
+                    <input type="text" id="search-bar" name="query" placeholder="Buscar destinos ou atrativos">
+                    <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
+                </form>
             </div>
         </div>
     </header>
     <main>
-        <section id="detalhes-destino">
-            <div class="imagem-faixa">
-                <img id="destino-imagem" src="" alt="Imagem do Destino">
-                <h1 id="destino-nome">Nome do Destino</h1>
-            </div>
-            <div id="destino-descricao" class="texto-descricao">Descrição do Destino</div>
-            <div id="destino-detalhes" class="texto-descricao">Informações adicionais sobre o destino</div>
-            <div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
+        <section id="resultados">
+            <img src="images/cazumba.jpg" alt="Imagem representando a Cazumba">
+            <h1>Resultados da Busca</h1>
+            <div id="resultados-list"></div>
         </section>
     </main>
     <footer>
         <p>©2024 Jorge Silva</p>
         <p>Trilhas - MA </p>
     </footer>
-    <script src="js/map.js"></script>
-    <script src="js/detalhes.js"></script>
+    <script src="js/resultados.js"></script>
 </body>
 </html>

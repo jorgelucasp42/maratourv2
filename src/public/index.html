@@ -24,8 +24,10 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <input type="text" id="search-bar" placeholder="Buscar destinos ou atrativos">
-                <button id="search-button"><i class="fas fa-search"></i></button>
+                <form id="search-form" action="resultados.html" method="get">
+                    <input type="text" id="search-bar" name="query" placeholder="Buscar destinos ou atrativos">
+                    <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
+                </form>
             </div>
         </div>
     </header>
@@ -82,7 +84,7 @@
         </section>
     </main>
     <footer>
-        <p>© 2024 Jorge Silva</p>
+        <p>©2024 Jorge Silva</p>
         <p>Trilhas - MA </p>
     </footer>
     <script src="js/map.js"></script>
