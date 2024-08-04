@@ -31,11 +31,11 @@ app.get('/api/search', async (req, res) => {
     console.log(`Recebendo consulta de busca: ${query}`); // Log para verificar a consulta recebida
 
     try {
-        const destinos = await Destino.find({ slug: { $regex: query, $options: 'i' } });
-        const atrativos = await Atrativo.find({ slug: { $regex: query, $options: 'i' } });
+        const destinos = await Destino.find({ $or: [{ slug: { $regex: query, $options: 'i' } }, { nome: { $regex: query, $options: 'i' } }] });
+        const atrativos = await Atrativo.find({ $or: [{ slug: { $regex: query, $options: 'i' } }, { nome: { $regex: query, $options: 'i' } }] });
 
-        console.log(`Destinos encontrados: ${destinos.length}`);
-        console.log(`Atrativos encontrados: ${atrativos.length}`);
+        console.log(`Destinos encontrados: ${destinos.length}`, destinos);
+        console.log(`Atrativos encontrados: ${atrativos.length}`, atrativos);
 
         const resultados = [
             ...destinos.map(destino => ({

@@ -7,28 +7,21 @@ function transformarEmSlug(texto) {
         .replace(/-+$/, '');            // Remove hífens do fim
 }
 
-document.getElementById("search-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+document.getElementById("search-form").addEventListener("submit", function (event) {
+    event.preventDefault();
     const query = document.getElementById("search-bar").value;
     const slug = transformarEmSlug(query);
-    console.log(`Busca por: ${slug}`); // Log para verificar o slug gerado
     window.location.href = `resultados.html?query=${slug}`;
 });
 
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('query');
-
     console.log(`Consulta recebida: ${query}`); // Log para verificar a consulta recebida
 
     if (query) {
         fetch(`/api/search?query=${query}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 console.log('Dados recebidos:', data); // Log para verificar os dados recebidos
                 const resultadosList = document.getElementById('resultados-list');
