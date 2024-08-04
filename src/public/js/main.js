@@ -15,3 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Erro ao buscar destinos:', error));
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    setInterval(nextSlide, 3000); // Muda o slide a cada 3 segundos
+});
