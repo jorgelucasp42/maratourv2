@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas
-app.use('/api', DestinoRoutes);
+app.use('/api/destinos', DestinoRoutes);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

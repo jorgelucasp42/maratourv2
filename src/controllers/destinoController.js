@@ -1,7 +1,7 @@
 import destino from "../models/destino.js";
 
 class DestinoController {
-    static async ListarDestinos(req, res) {
+    static async ListarDestinos (req, res) {
         try {
             console.log("Buscando destinos...");  // Log para depuração
             const listaDestinos = await destino.find({});
@@ -29,17 +29,21 @@ class DestinoController {
 
     static async BuscarDestinoPorSlug(req, res) {
         try {
+            console.log("Buscando destino por slug:", req.query.slug); // Log para depuração
             const destinoEncontrado = await destino.findOne({ slug: req.query.slug });
             if (destinoEncontrado) {
+                console.log("Destino encontrado:", destinoEncontrado); // Log para depuração
                 res.status(200).json(destinoEncontrado);
             } else {
+                console.log("Destino não encontrado"); // Log para depuração
                 res.status(404).send("Destino não encontrado");
             }
         } catch (error) {
-            console.error("Erro ao buscar destino:", error);
+            console.error("Erro ao buscar destino por slug:", error);
             res.status(500).send("Erro ao buscar destino");
         }
     }
 }
 
 export default DestinoController;
+

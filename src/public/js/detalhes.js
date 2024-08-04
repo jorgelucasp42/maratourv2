@@ -3,13 +3,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const destinoSlug = urlParams.get('destino');
 
     if (destinoSlug) {
-        fetch(`/api/destinos?slug=${destinoSlug}`)
+        fetch(`/api/destinos/destino?slug=${destinoSlug}`)
             .then(response => response.json())
             .then(destino => {
+                console.log("Destino retornado:", destino); // Log para verificar a estrutura do destino
                 if (destino) {
                     document.getElementById('destino-nome').innerText = destino.nome;
                     document.getElementById('destino-descricao').innerText = destino.descricao;
-                    // Adicione o código para exibir o mapa com a localização do destino
+
+                    // Verifique se a localização está definida antes de chamar initMap
+                    if (destino.localizacao) {
+                        initMap(destino.localizacao.latitude, destino.localizacao.longitude);
+                    } else {
+                        document.getElementById('map').innerText = 'Localização do destino não especificada';
+                    }
                 } else {
                     document.getElementById('detalhes-destino').innerText = 'Destino não encontrado';
                 }
