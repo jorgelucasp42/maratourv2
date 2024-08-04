@@ -205,3 +205,15 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    header nav ul {
+        display: none; /* Esconde o menu de navegação em telas pequenas */
+    }
+
+    .search-container {
+        flex: 2; /* Ajusta o tamanho do contêiner de busca */
+        justify-content: flex-start;
+    }
+}
