@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('atrativo-descricao').innerText = atrativo.descricao;
                     document.getElementById('atrativo-imagem').src = atrativo.imagem;
                     document.getElementById('atrativo-imagem').alt = `Imagem de ${atrativo.nome}`;
-                    document.getElementById('atrativo-detalhes').innerText = `Localizado no destino: ${atrativo.destino.nome}`;
+                    document.getElementById('atrativo-detalhes').innerText = `Informações adicionais sobre ${atrativo.nome}`;
 
                     // Verifique se a localização está definida antes de chamar initMap
                     if (atrativo.localizacao) {

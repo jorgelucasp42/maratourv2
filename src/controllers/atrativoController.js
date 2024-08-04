@@ -1,40 +1,37 @@
 import Atrativo from "../models/atrativo.js";
 
 class AtrativoController {
-    static async listarAtrativos(req, res) {
+    static async ListarAtrativos (req, res) {
         try {
-            const atrativos = await Atrativo.find({ destino: req.params.destinoId }).populate('destino');
-            res.status(200).json(atrativos);
+            const listaAtrativos = await Atrativo.find({});
+            res.status(200).json(listaAtrativos);
         } catch (error) {
-            console.error("Erro ao listar atrativos:", error);
-            res.status(500).send("Erro ao listar atrativos");
+            res.status(500).send("Erro ao buscar atrativos");
         }
     }
 
-    static async buscarAtrativoPorId(req, res) {
+    static async BuscarAtrativoPorId(req, res) {
         try {
-            const atrativo = await Atrativo.findById(req.params.atrativoId).populate('destino');
-            if (atrativo) {
-                res.status(200).json(atrativo);
+            const atrativoEncontrado = await Atrativo.findById(req.params.id);
+            if (atrativoEncontrado) {
+                res.status(200).json(atrativoEncontrado);
             } else {
                 res.status(404).send("Atrativo não encontrado");
             }
         } catch (error) {
-            console.error("Erro ao buscar atrativo:", error);
             res.status(500).send("Erro ao buscar atrativo");
         }
     }
 
-    static async buscarAtrativoPorSlug(req, res) {
+    static async BuscarAtrativoPorSlug(req, res) {
         try {
-            const atrativo = await Atrativo.findOne({ slug: req.query.slug }).populate('destino');
-            if (atrativo) {
-                res.status(200).json(atrativo);
+            const atrativoEncontrado = await Atrativo.findOne({ slug: req.query.slug });
+            if (atrativoEncontrado) {
+                res.status(200).json(atrativoEncontrado);
             } else {
                 res.status(404).send("Atrativo não encontrado");
             }
         } catch (error) {
-            console.error("Erro ao buscar atrativo por slug:", error);
             res.status(500).send("Erro ao buscar atrativo");
         }
     }
