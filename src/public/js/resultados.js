@@ -1,42 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
+function transformarEmSlug(texto) {
+    return texto.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Substitui espaços por hífens
+        .replace(/[^\w\-]+/g, '')       // Remove todos os caracteres não alfanuméricos
+        .replace(/\-\-+/g, '-')         // Substitui múltiplos hífens por um único hífen
+        .replace(/^-+/, '')             // Remove hífens do início
+        .replace(/-+$/, '');            // Remove hífens do fim
+}
+
+document.getElementById("search-button").addEventListener("click", function () {
+    const query = document.getElementById("search-bar").value;
+    const slug = transformarEmSlug(query);
+    window.location.href = `resultados.html?search=${slug}`;
+});
+
+document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('query');
+    const searchQuery = urlParams.get('search');
 
-    if (query) {
-        fetch(`/api/search?query=${encodeURIComponent(query)}`)
+    if (searchQuery) {
+        fetch(`/api/buscar?query=${searchQuery}`)
             .then(response => response.json())
-            .then(data => {
-                const resultadosList = document.getElementById('resultados-list');
-                resultadosList.innerHTML = ''; // Limpar resultados anteriores
+            .then(resultados => {
+                const resultadosContainer = document.getElementById('resultados-list');
+                resultadosContainer.innerHTML = '';
 
-                if (data.length > 0) {
-                    data.forEach(item => {
-                        const itemDiv = document.createElement('div');
-                        itemDiv.className = 'resultado-item';
-                        itemDiv.innerHTML = `
-                            <a href="${item.url}">
-                                <div class="imagem-faixa">
-                                    <img src="${item.imagem}" alt="${item.nome}">
-                                    <h2>${item.nome}</h2>
-                                </div>
-                                <div class="texto-descricao">
-                                    <p>${item.descricao}</p>
-                                </div>
-                            </a>
+                if (resultados.length > 0) {
+                    resultados.forEach(item => {
+                        const itemElemento = document.createElement('div');
+                        itemElemento.classList.add('resultado-item');
+                        itemElemento.innerHTML = `
+                            <div class="imagem-faixa">
+                                <img src="${item.imagem}" alt="${item.nome}">
+                                <h1>${item.nome}</h1>
+                            </div>
+                            <p>${item.descricao}</p>
+                            <a href="${item.tipo === 'destino' ? 'detalhes.html?destino=' : 'detalhesatrativos.html?atrativo='}${item.slug}">Ver mais</a>
                         `;
-                        resultadosList.appendChild(itemDiv);
+                        resultadosContainer.appendChild(itemElemento);
                     });
                 } else {
-                    resultadosList.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                    resultadosContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
                 }
             })
             .catch(error => {
                 console.error('Erro ao buscar resultados:', error);
-                const resultadosList = document.getElementById('resultados-list');
-                resultadosList.innerHTML = '<p>Erro ao buscar resultados.</p>';
+                document.getElementById('resultados-list').innerHTML = 'Erro ao buscar resultados.';
             });
     } else {
-        const resultadosList = document.getElementById('resultados-list');
-        resultadosList.innerHTML = '<p>Nenhuma consulta especificada.</p>';
+        document.getElementById('resultados-list').innerHTML = 'Nenhum termo de busca especificado.';
     }
 });
