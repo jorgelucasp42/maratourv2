@@ -1,9 +1,11 @@
 import express from 'express';
 import conectaNaDatabase from './config/dbConnect.js';
 import DestinoRoutes from './routes/DestinosRoutes.js';
-import AtrativoRoutes from './routes/AtrativosRoutes.js'; // Adicionado
+import AtrativoRoutes from './routes/AtrativosRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import Destino from './models/destino.js';
+import Atrativo from './models/atrativo.js';
 
 // Resolver __dirname para módulos ES
 const __filename = fileURLToPath(import.meta.url);
@@ -21,17 +23,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rotas
 app.use('/api/destinos', DestinoRoutes);
-app.use('/api/atrativos', AtrativoRoutes); // Adicionado
+app.use('/api/atrativos', AtrativoRoutes);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
+// Rota de busca
 app.get('/api/search', async (req, res) => {
     const query = req.query.query;
+    console.log(`Recebendo consulta de busca: ${query}`); // Log para verificar a consulta recebida
+
     try {
-        const destinos = await Destino.find({ nome: { $regex: query, $options: 'i' } });
-        const atrativos = await Atrativo.find({ nome: { $regex: query, $options: 'i' } });
+        const destinos = await Destino.find({ slug: { $regex: query, $options: 'i' } });
+        const atrativos = await Atrativo.find({ slug: { $regex: query, $options: 'i' } });
+
+        console.log(`Destinos encontrados: ${destinos.length}`);
+        console.log(`Atrativos encontrados: ${atrativos.length}`);
 
         const resultados = [
             ...destinos.map(destino => ({
@@ -55,5 +59,8 @@ app.get('/api/search', async (req, res) => {
     }
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 export default app;
