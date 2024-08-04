@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Atrativo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html"><img src="images/maratour-logo.png" alt="MaraTour Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="sobre.html">Sobre o Maranhão</a></li>
+                    <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
+                    <li><a href="cultura.html">Cultura e Tradições</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Buscar destinos ou atrativos">
+                <button id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="detalhes-atrativo">
+            <div class="imagem-faixa">
+                <img id="atrativo-imagem" src="" alt="Imagem do Atrativo">
+                <h1 id="atrativo-nome">Nome do Atrativo</h1>
+            </div>
+            <div class="texto-descricao" id="atrativo-descricao">Descrição do Atrativo</div>
+            <div id="map"></div>
+            <div id="atrativo-detalhes">Informações adicionais sobre o atrativo e o destino ao qual pertence.</div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Jorge Silva / Trilhas - MA </p>
+        <p>Todos os direitos reservados.</p>
+    </footer>
+    <script src="js/map.js"></script>
+    <script src="js/detalhesatrativos.js"></script>
+</body>
+</html>
