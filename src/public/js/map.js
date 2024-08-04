@@ -24,6 +24,10 @@ function initMap() {
                         map: map,
                         title: destino.nome
                     });
+
+                    // Atualize os detalhes do destino na página
+                    document.getElementById("destino-nome").innerText = destino.nome;
+                    document.getElementById("destino-descricao").innerText = destino.descricao;
                 } else {
                     document.getElementById('map').innerText = 'Destino não encontrado';
                 }
