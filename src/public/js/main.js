@@ -3,19 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             const destinosList = document.getElementById('destinos-list');
-            data.forEach(destino => {
-                const destinoItem = document.createElement('div');
-                destinoItem.innerHTML = `
-                    <h3>${destino.nome}</h3>
-                    <p>${destino.descricao}</p>
-                    <img src="${destino.imagem}" alt="${destino.nome}">
-                `;
-                destinosList.appendChild(destinoItem);
-            });
+            if (destinosList) {
+                data.forEach(destino => {
+                    const destinoItem = document.createElement('div');
+                    destinoItem.innerHTML = `
+                        <h3>${destino.nome}</h3>
+                        <p>${destino.descricao}</p>
+                        <img src="${destino.imagem}" alt="${destino.nome}">`;
+                    destinosList.appendChild(destinoItem);
+                });
+            }
         })
         .catch(error => console.error('Erro ao buscar destinos:', error));
-});
-document.addEventListener("DOMContentLoaded", function() {
+
     const slides = document.querySelectorAll('.carousel-slide');
     let currentSlide = 0;
 
@@ -30,4 +30,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     setInterval(nextSlide, 3000); // Muda o slide a cada 3 segundos
+
+    slides.forEach(slide => {
+        slide.addEventListener('click', function () {
+            const destination = this.querySelector('h2').innerText.toLowerCase().replace(/ /g, '-');
+            window.location.href = `detalhes.html?destino=${destination}`;
+        });
+    });
 });
