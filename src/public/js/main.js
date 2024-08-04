@@ -38,7 +38,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-document.getElementById("menu-button").addEventListener("click", function () {
-    var navMenu = document.getElementById("nav-menu").querySelector('ul');
-    navMenu.classList.toggle('show');
-});

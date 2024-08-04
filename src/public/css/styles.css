@@ -24,20 +24,10 @@ header {
 
 .logo {
     flex: 1;
-    display: flex;
-    align-items: center;
 }
 
 .logo img {
     height: 70px; /* Ajustando a altura da logo */
-}
-
-#menu-button {
-    display: none;
-    cursor: pointer;
-    font-size: 24px;
-    margin-left: 10px;
-    color: white;
 }
 
 header nav {
@@ -261,57 +251,36 @@ footer {
 @media (max-width: 768px) {
     .header-container {
         padding: 20px 0px;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
     }
 
     header nav ul {
         display: none;
         flex-direction: column;
         width: 100%;
-        background-color: #050a30; /* Cor do fundo do menu */
-        position: relative;
-        z-index: 1000;
-    }
-
-    header nav ul.show {
-        display: flex;
-    }
-
-    header nav ul li {
-        margin: 0;
-        padding: 10px 20px;
-        width: 100%;
-    }
-
-    header nav ul li:hover {
-        background-color: #ff6600; /* Alteração de cor ao passar o cursor */
-    }
-
-    header nav ul li a {
-        width: 100%;
     }
 
     .search-container {
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 
     .logo {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
     }
 
     .logo img {
-        height: 80px;
+        height: 50px;
     }
 
-    
-
-    #nav-menu {
-        width: 100%;
+    #menu-button {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        margin-left: auto;
+        color: white;
     }
 }
-
