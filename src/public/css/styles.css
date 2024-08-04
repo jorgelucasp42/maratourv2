@@ -205,3 +205,24 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.destino-imagem-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.destino-imagem-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#destino-descricao, #destino-detalhes {
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+#map {
+    margin-top: 20px;
+}

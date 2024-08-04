@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`/api/destinos/destino?slug=${destinoSlug}`)
             .then(response => response.json())
             .then(destino => {
-                console.log("Destino retornado:", destino); // Log para verificar a estrutura do destino
                 if (destino) {
                     document.getElementById('destino-nome').innerText = destino.nome;
                     document.getElementById('destino-descricao').innerText = destino.descricao;
+                    document.getElementById('destino-imagem').src = destino.imagem;
+                    document.getElementById('destino-imagem').alt = `Imagem de ${destino.nome}`;
+                    document.getElementById('destino-detalhes').innerText = `Informações adicionais sobre ${destino.nome}`;
 
                     // Verifique se a localização está definida antes de chamar initMap
                     if (destino.localizacao) {
