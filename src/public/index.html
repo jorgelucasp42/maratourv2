@@ -28,6 +28,7 @@
                     <input type="text" id="search-bar" name="query" placeholder="Buscar destinos ou atrativos">
                     <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
                 </form>
+                <div id="menu-button" class="menu-button"><i class="fas fa-bars"></i></div>
             </div>
         </div>
     </header>
@@ -91,13 +92,10 @@
     <script src="js/main.js"></script>
     <script>
         document.getElementById("menu-button").addEventListener("click", function () {
-            var navMenu = document.getElementById("nav-menu");
-            if (navMenu.style.display === "flex") {
-                navMenu.style.display = "none";
-            } else {
-                navMenu.style.display = "flex";
-            }
+            var navMenu = document.getElementById("nav-menu").querySelector('ul');
+            navMenu.classList.toggle('show');
         });
     </script>
+   
 </body>
 </html>
