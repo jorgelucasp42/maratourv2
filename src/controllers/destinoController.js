@@ -1,7 +1,7 @@
 import destino from "../models/destino.js";
 
 class DestinoController {
-    static async ListarDestinos (req, res) {
+    static async ListarDestinos(req, res) {
         try {
             console.log("Buscando destinos...");  // Log para depuração
             const listaDestinos = await destino.find({});
