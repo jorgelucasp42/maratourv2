@@ -15,38 +15,33 @@ document.getElementById("search-button").addEventListener("click", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const searchQuery = urlParams.get('search');
+    const query = urlParams.get('query');
 
-    if (searchQuery) {
-        fetch(`/api/buscar?query=${searchQuery}`)
+    if (query) {
+        fetch(`/api/search?query=${query}`)
             .then(response => response.json())
-            .then(resultados => {
-                const resultadosContainer = document.getElementById('resultados-list');
-                resultadosContainer.innerHTML = '';
-
-                if (resultados.length > 0) {
-                    resultados.forEach(item => {
-                        const itemElemento = document.createElement('div');
-                        itemElemento.classList.add('resultado-item');
-                        itemElemento.innerHTML = `
-                            <div class="imagem-faixa">
-                                <img src="${item.imagem}" alt="${item.nome}">
-                                <h1>${item.nome}</h1>
-                            </div>
+            .then(data => {
+                const resultadosList = document.getElementById('resultados-list');
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        const resultadoItem = document.createElement('div');
+                        resultadoItem.className = 'resultado-item';
+                        resultadoItem.innerHTML = `
+                            <h3>${item.nome}</h3>
                             <p>${item.descricao}</p>
-                            <a href="${item.tipo === 'destino' ? 'detalhes.html?destino=' : 'detalhesatrativos.html?atrativo='}${item.slug}">Ver mais</a>
+                            <a href="${item.url}">Ver mais</a>
                         `;
-                        resultadosContainer.appendChild(itemElemento);
+                        resultadosList.appendChild(resultadoItem);
                     });
                 } else {
-                    resultadosContainer.innerHTML = '<p>Nenhum resultado encontrado.</p>';
+                    resultadosList.innerHTML = '<p>Nenhum resultado encontrado.</p>';
                 }
             })
             .catch(error => {
                 console.error('Erro ao buscar resultados:', error);
-                document.getElementById('resultados-list').innerHTML = 'Erro ao buscar resultados.';
+                document.getElementById('resultados-list').innerHTML = '<p>Erro ao buscar resultados.</p>';
             });
     } else {
-        document.getElementById('resultados-list').innerHTML = 'Nenhum termo de busca especificado.';
+        document.getElementById('resultados-list').innerHTML = '<p>Nenhuma busca realizada.</p>';
     }
 });
