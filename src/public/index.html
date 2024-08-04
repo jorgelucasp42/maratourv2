@@ -15,7 +15,7 @@
             <div class="logo">
                 <a href="index.html"><img src="images/maratour-logo.png" alt="MaraTour Logo"></a>
             </div>
-            <nav>
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="sobre.html">Sobre o Maranhão</a></li>
                     <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
@@ -37,9 +37,13 @@
             <div class="carousel-slide" style="background-image: url('images/sao-luis.png');">
                 <h2>São Luís: Patrimônio Histórico</h2>
             </div>
+            <div class="carousel-slide" style="background-image: url('images/alcantara.png');">
+                <h2>Alcântara</h2>
+            </div>
             <div class="carousel-slide" style="background-image: url('images/carolina.png');">
                 <h2>Chapada das Mesas</h2>
             </div>
+            
         </section>
         <section id="attractions">
             <div class="grid-container">
@@ -76,5 +80,15 @@
     </footer>
     <script src="js/map.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        document.getElementById("menu-button").addEventListener("click", function () {
+            var navMenu = document.getElementById("nav-menu");
+            if (navMenu.style.display === "flex") {
+                navMenu.style.display = "none";
+            } else {
+                navMenu.style.display = "flex";
+            }
+        });
+    </script>
 </body>
 </html>
