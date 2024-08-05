@@ -27,11 +27,12 @@ header {
 }
 
 .logo {
+    padding-top: 10px;
     flex: 1;
 }
 
 .logo img {
-    height: 100px; /* Ajustando a altura da logo */
+    height: 80px; /* Ajustando a altura da logo */
 }
 
 header nav {
@@ -301,6 +302,9 @@ footer {
         justify-content: center;
     }
 
+    header {
+        height: 100px; /* Valor para aumentar a altura do header */
+    }
     header nav ul {
         display: none;
         flex-direction: column;
@@ -308,28 +312,51 @@ footer {
     }
 
     .search-container {
+        margin-top: 25px; /* Ajuste para descer a caixa de busca */
+        display: flex;
+        align-items: center;
+        flex: 1;
+        justify-content: flex-end;
+        width: 50%;
+        margin-left: -100px;
+    }
+    #search-bar {
+        padding: 5px;
+        font-size: 16px;
         width: 100%;
-        justify-content: flex-start;
-        
+        flex: 1; /* Permite que o campo de entrada ocupe o máximo de espaço disponível */
+    }
+    #search-button {
+        background: none;
+        border: none;
+        color: #050a30;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-container input {
+        width: 100%; /
     }
 
     .logo {
-        width: 100%;
+        width: auto; /* Permite que o contêiner do logo seja maior que o logo */
         display: flex;
         justify-content: center;
-        padding-left: 200px;
-        
+        padding-left: 60px;
     }
 
     .logo img {
-        height: 100px;
+        height: 80px;
     }
 
     #menu-button {
         display: block;
         cursor: pointer;
         font-size: 24px;
-        margin-left: auto;
+        margin-left: 10px;
+        margin-top: 25px; 
         color: white;
     }
 
