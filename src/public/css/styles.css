@@ -31,7 +31,7 @@ header {
 }
 
 .logo img {
-    height: 70px; /* Ajustando a altura da logo */
+    height: 100px; /* Ajustando a altura da logo */
 }
 
 header nav {
@@ -304,7 +304,7 @@ footer {
     header nav ul {
         display: none;
         flex-direction: column;
-        width: 100%;
+        width: 150%;
     }
 
     .search-container {
@@ -317,10 +317,12 @@ footer {
         width: 100%;
         display: flex;
         justify-content: center;
+        padding-left: 200px;
+        
     }
 
     .logo img {
-        height: 50px;
+        height: 100px;
     }
 
     #menu-button {
