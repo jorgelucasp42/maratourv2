@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +29,17 @@
                     <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
                 </form>
             </div>
+            <div class="menu-icon" id="menu-button">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <ul>
+                    <li><a href="sobre.html">Sobre o Maranhão</a></li>
+                    <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
+                    <li><a href="cultura.html">Cultura e Tradições</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                </ul>
+            </div>
         </div>
     </header>
     <main>
@@ -46,5 +57,15 @@
         <p>Trilhas - MA </p>
     </footer>
     <script src="js/resultados.js"></script>
+    <script>
+        document.getElementById("menu-button").addEventListener("click", function () {
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+            } else {
+                dropdownMenu.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
