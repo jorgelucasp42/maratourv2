@@ -298,6 +298,7 @@ footer {
         padding: 20px 0px;
         flex-direction: row;
         align-items: flex-start;
+        justify-content: center;
     }
 
     header nav ul {
@@ -309,12 +310,13 @@ footer {
     .search-container {
         width: 100%;
         justify-content: flex-start;
+        
     }
 
     .logo {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .logo img {
