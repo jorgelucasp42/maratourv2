@@ -2,6 +2,8 @@
 
 MaraTour é uma plataforma web desenvolvida para explorar os destinos e atrações turísticas do Maranhão. A plataforma oferece informações detalhadas sobre diversos pontos turísticos, permitindo que os usuários busquem e descubram novos locais para visitar.
 
+Acesse: https://maratourv2.vercel.app/
+
 ## Tecnologias Utilizadas
 
 ### Frontend
