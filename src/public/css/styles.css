@@ -303,7 +303,7 @@ footer {
     }
 
     header {
-        height: 100px; /* Valor para aumentar a altura do header */
+        height: 110px; /* Valor para aumentar a altura do header */
     }
     header nav ul {
         display: none;

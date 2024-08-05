@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos</title>
+    <title>MaraTour</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -15,7 +15,7 @@
             <div class="logo">
                 <a href="index.html"><img src="images/maratour-logo.png" alt="MaraTour Logo"></a>
             </div>
-            <nav>
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="sobre.html">Sobre o Maranhão</a></li>
                     <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
@@ -24,8 +24,21 @@
                 </ul>
             </nav>
             <div class="search-container">
-                <input type="text" id="search-bar" placeholder="Buscar destinos ou atrativos">
-                <button id="search-button"><i class="fas fa-search"></i></button>
+                <form id="search-form" action="resultados.html" method="get">
+                    <input type="text" id="search-bar" name="query" placeholder="Buscar destinos ou atrativos">
+                    <button id="search-button" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div class="menu-icon" id="menu-button">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <ul>
+                    <li><a href="sobre.html">Sobre o Maranhão</a></li>
+                    <li><a href="destinosatracoes.html">Destinos e Atrações</a></li>
+                    <li><a href="cultura.html">Cultura e Tradições</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                </ul>
             </div>
         </div>
     </header>
@@ -54,5 +67,15 @@
         <p>©2024 Jorge Silva</p>
         <p>Trilhas - MA </p>
     </footer>
+    <script>
+        document.getElementById("menu-button").addEventListener("click", function () {
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.display = "none";
+            } else {
+                dropdownMenu.style.display = "block";
+            }
+        });
+    </script>
 </body>
 </html>
