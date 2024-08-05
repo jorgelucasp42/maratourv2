@@ -1,78 +1,75 @@
 # MaraTour
 
-MaraTour é uma plataforma online desenvolvida para explorar destinos populares do Maranhão, proporcionando uma experiência imersiva e informativa para os usuários. A plataforma foi construída utilizando diversas tecnologias de programação para garantir desempenho, escalabilidade e segurança.
+MaraTour é uma plataforma web desenvolvida para explorar os destinos e atrações turísticas do Maranhão. A plataforma oferece informações detalhadas sobre diversos pontos turísticos, permitindo que os usuários busquem e descubram novos locais para visitar.
 
 ## Tecnologias Utilizadas
 
-- **Mongoose**: Biblioteca ODM (Object Data Modeling) para MongoDB e Node.js. Utilizada para modelar e gerenciar os dados.
-- **Nodemon**: Ferramenta que ajuda no desenvolvimento de aplicações Node.js, reiniciando automaticamente o servidor sempre que mudanças no código são detectadas.
-- **Express**: Framework web para Node.js, utilizado para construir a API que alimenta a plataforma MaraTour.
-- **MongoDB Atlas**: Serviço de banco de dados em nuvem que permite configurar, executar e escalar o MongoDB na nuvem.
-- **dotenv**: Módulo que carrega variáveis de ambiente de um arquivo `.env` para `process.env`, utilizado para manter as configurações sensíveis fora do código fonte.
+### Frontend
+- **HTML5:** Estrutura básica das páginas.
+- **CSS3:** Estilização das páginas, utilizando Flexbox e Media Queries para responsividade.
+- **JavaScript (ES6):** Interatividade e manipulação do DOM.
+- **Font Awesome:** Ícones para a interface (menu hambúrguer, lupa de busca).
+- **Google Fonts:** Fonte Roboto para estilização.
+
+### Backend
+- **Node.js:** Ambiente de execução do JavaScript no servidor.
+- **Express.js:** Framework para construção de aplicações web.
+- **MongoDB Atlas:** Banco de dados NoSQL para armazenamento de dados.
+- **Mongoose:** ODM para MongoDB, facilitando a interação com o banco de dados.
+
+### Hospedagem
+- **Vercel:** Plataforma de hospedagem utilizada para implantar a aplicação.
+- **Imgur:** Plataforma repositório de imagens para busca através dos links registrados nos itens das coleções do BD. 
 
 ## Funcionalidades
 
-### Busca de Destinos e Atrativos
+### Funcionalidades Principais
+1. **Página Principal:** Apresenta um carrossel com imagens de destaque e uma grade de destinos e atrações.
+2. **Barra de Busca:** Permite aos usuários buscar destinos ou atrações por nome.
+3. **Menu Hambúrguer:** Menu de navegação responsivo para acessar diferentes seções do site.
+4. **Resultados de Busca:** Exibe uma lista de destinos e atrações correspondentes à pesquisa realizada.
+5. **Detalhes do Destino/Atrativo:** Página detalhada para cada destino ou atração, incluindo descrição, dicas e localização no mapa.
 
-A plataforma oferece uma caixa de busca que permite aos usuários pesquisar por destinos ou atrativos turísticos registrados no banco de dados. A busca é facilitada pelo motor de busca embutido no MongoDB, que utiliza a técnica de embedding para relacionar cidades e seus atrativos diretamente nos documentos do MongoDB.
+### Funcionalidade de Busca
+- A busca é realizada através da barra de pesquisa localizada no topo da página. O sistema converte a string inserida pelo usuário em um slug e realiza a busca no banco de dados para encontrar destinos ou atrações correspondentes.
+- A pesquisa é feita de forma ampla, considerando partes do nome inserido, para facilitar a localização de resultados relevantes.
 
-### Destinos (Cidades) Registrados
+## Destinos e Atrações Registrados
 
-Até o momento, as seguintes cidades estão registradas na plataforma:
+### Destinos (Cidades)
+- **São Luís:** A capital do Maranhão, famosa por seu centro histórico.
+- **Barreirinhas:** Porta de entrada para os Lençóis Maranhenses.
+- **Alcântara:** Cidade histórica conhecida por suas ruínas coloniais.
+- **Carolina:** Localizada na Chapada das Mesas, conhecida por suas cachoeiras.
+- **São José de Ribamar:** Conhecida por suas praias e o Santuário de São José de Ribamar.
 
-- **Barreirinhas**
-- **São Luís**
-- **Carolina**
-- **Alcântara**
-- **São José de Ribamar**
+### Atrações (Pontos Turísticos)
+- **Praça Gonçalves Dias (São Luís):** Uma praça emblemática com vista panorâmica.
+- **Palácio dos Leões (São Luís):** Sede do governo estadual e símbolo histórico.
+- **Teatro Arthur Azevedo (São Luís):** Um dos teatros mais antigos do Brasil.
+- **Lençóis Maranhenses:** Destino natural com dunas de areia branca e lagoas de água doce.
+- **Cachoeira do Itapecuru:** Cachoeira localizada na região de Carolina.
+- **Cachoeira da Pedra Caída:** Cachoeira na Chapada das Mesas, ideal para trilhas.
+- **Igreja de São José de Ribamar:** Igreja histórica e ponto de peregrinação.
 
-### Atrativos (Pontos Turísticos) Registrados
+### Página de resultados
+- A página de resultados é implementada para exibir informações detalhadas de destinos e atrações específicas. Utiliza as rotas de destino e atrativo para buscar as informações registradas das cidades e pontos turísticos e formar a página.
+- Dependendo do tipo de resultado (destino ou atração), a página correspondente é carregada com todos os dados necessários, como nome, descrição, dicas, imagem e localização no mapa.
+Copiar código
+## Endpoints da API
 
-Os seguintes pontos turísticos estão registrados e podem ser encontrados utilizando a caixa de busca:
+### Endpoints de Destinos
+- **GET /api/destinos/:slug:** Rota para buscar um destino pelo slug.
+- **GET /api/destinos/:id:** Rota para buscar um destino específico pelo ID.
+- **GET /api/destinos:** Rota para listar todos os destinos.
+- **GET /api/destinos/:destinoId/atrativos:** Rota para listar atrativos de um destino específico.
 
-- **Praça Gonçalves Dias**
-- **Palácio dos Leões**
-- **Teatro Arthur Azevedo**
-- **Chapada das Mesas**
+### Endpoints de Atrações
+- **GET /api/atrativos/:slug:** Rota para buscar uma atração pelo slug.
+- **GET /api/atrativos/:id:** Rota para buscar uma atração específica pelo ID.
+- **GET /api/atrativos:** Rota para listar todas as atrações.
 
-## Estrutura de Dados
-
-### Embedding no MongoDB
-
-Para otimizar as buscas e relacionar facilmente destinos e seus atrativos, utilizamos a técnica de embedding no MongoDB. Com essa técnica, os dados dos atrativos turísticos são embutidos diretamente nos documentos das cidades, permitindo buscas rápidas e eficientes.
-
-### Exemplo de Documento de Cidade com Atrativos Embutidos
-
-```json
-{
-  "nome": "São Luís",
-  "descricao": "Patrimônio Histórico",
-  "imagem": "images/sao-luis.png",
-  "atrativos": [
-    {
-      "nome": "Praça Gonçalves Dias",
-      "descricao": "Um belo ponto turístico...",
-      "imagem": "images/praca-goncalves-dias.png"
-    },
-    {
-      "nome": "Palácio dos Leões",
-      "descricao": "Residência oficial do governador...",
-      "imagem": "images/palacio-dos-leoes.png"
-    }
-  ]
-}
-## API Endpoints
-
-A API possui os seguintes endpoints para busca e gerenciamento de destinos e atrativos:
-
-- **GET /destinos/:slug**: Retorna os detalhes de um destino específico usando o slug.
-- **GET /atrativos/:slug**: Retorna os detalhes de um atrativo turístico específico usando o slug.
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+### Endpoint de Busca
+- **GET /api/search?query=texto_de_busca:** Realiza a busca de destinos e atrações com base no texto de busca fornecido. Retorna uma lista de resultados correspondentes. A busca é realizada considerando tanto o nome quanto o slug dos destinos e atrações, permitindo uma busca ampla e flexível.
 
 ---
-
-Desenvolvido por Jorge Silva e Equipe Trilhas - MA.
-
